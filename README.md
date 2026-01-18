@@ -1,0 +1,4 @@
+# Implementation & Compatibility
+The cosine curve effect is achieved by adjusting the [solar_power_multiplier](https://lua-api.factorio.com/stable/classes/LuaSurface.html#solar_power_multiplier) property of each surface on each tick, thereby transforming the trapezoidal function into a cosine curve. The mod should be compatible with any mods that don't touch this value themselves.
+
+Curiously yet fortunately, the game doesn't seem to make use of this property at all to my knowledge: In Space Age, the different planets achieve different levels of solar power by [multiplying the production with the "solar-power" surface property](https://lua-api.factorio.com/stable/prototypes/SolarPanelPrototype.html#solar_coefficient_property) defined in their prototype. Thereby, support for other planets (modded too) comes for free.
