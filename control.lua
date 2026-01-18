@@ -34,9 +34,9 @@ script.on_event(defines.events.on_tick,
             modifier = post_curve(t)
         elseif t > c.d then
             modifier = post_curve(t)/(c.post_slope*(t - c.d))
-        elseif t > c.n then
+        elseif t >= c.n then
             modifier = 1.0
-        elseif t > c.E then
+        elseif t >= c.E then
             modifier = pre_curve(t)/(c.pre_slope*(t - c.n))
         else
             modifier = pre_curve(t)
