@@ -69,14 +69,19 @@ end
 --- [ Event Handling ] ---
 --------------------------
 
----Compute constants whenever a new surface is created
+---Compute constants whenever a new surface is created.
 ---Since the default surface ('nauvis') is not created, its constants are computed on init instead.
 script.on_event(defines.events.on_surface_created, function (event)
     local surface = game.surfaces[event.surface_index]
     compute_constants(surface)
 end)
+
+---Compute constants for all preexisting surfaces when the mod is added
+---(just 'nauvis' on a new game, more if the mod is added mid-playthrough)
 script.on_init(function (event)
-    compute_constants(game.surfaces[1])
+    for _, surface in pairs(game.surfaces) do
+        compute_constants(surface)
+    end
 end)
 
 ---Adjust solar multiplier each tick
