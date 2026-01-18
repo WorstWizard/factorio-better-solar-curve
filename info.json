@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "title": "Cosine Solar Curve",
     "author": "WorstWizard",
-    "factorio_version": "1.1",
-    "dependencies": ["base >= 1.1"],
+    "factorio_version": "2.0",
+    "dependencies": ["base >= 2.0"],
     "description": "Changes solar power curve to a cosine curve."
 }
