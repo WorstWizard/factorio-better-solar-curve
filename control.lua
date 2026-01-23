@@ -88,6 +88,10 @@ end)
 script.on_event(defines.events.on_tick, function ()
     for surface_name in pairs(game.surfaces) do
         local surface = game.surfaces[surface_name]
-        surface.solar_power_multiplier = solar_power_adjusted_mult(surface)
+        if settings.global["better-solar-curve-enabled"].value then
+            surface.solar_power_multiplier = solar_power_adjusted_mult(surface)
+        else
+            surface.solar_power_multiplier = 1.0
+        end
     end
 end)
