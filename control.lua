@@ -85,13 +85,27 @@ script.on_init(function (event)
 end)
 
 ---Adjust solar multiplier each tick
-script.on_event(defines.events.on_tick, function ()
+local function on_tick_run()
     for surface_name in pairs(game.surfaces) do
         local surface = game.surfaces[surface_name]
+        surface.solar_power_multiplier = solar_power_adjusted_mult(surface)
+    end
+end
+script.on_event(defines.events.on_tick, on_tick_run)
+
+---Enable/disable runtime setting handling
+local function reset_multipliers()
+    for surface_name in pairs(game.surfaces) do
+        game.surfaces[surface_name].solar_power_multiplier = 1.0
+    end
+end
+script.on_event(defines.events.on_runtime_mod_setting_changed, function (event)
+    if event.setting == "better-solar-curve-enabled" then
         if settings.global["better-solar-curve-enabled"].value then
-            surface.solar_power_multiplier = solar_power_adjusted_mult(surface)
+            script.on_event(defines.events.on_tick, on_tick_run)
         else
-            surface.solar_power_multiplier = 1.0
+            reset_multipliers()
+            script.on_event(defines.events.on_tick, nil)
         end
     end
 end)
