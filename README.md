@@ -1,7 +1,11 @@
 Adjusts the solar power curve to be cosine-shaped. In a sense this is a cosmetic mod: The total power production throughout a full day is identical to the vanilla curve, so this doesn't buff/nerf solar power, though peak output is higher and so may need more accumulators to handle the power input.
 
 # Installing & Uninstalling
-The mod is safe to add mid-playthrough and should function correctly. The mod is **not currently safe to remove mid-playthrough:** Doing so will freeze the adjustment to the curve at whichever level it was at when removed, on each planet.
+The mod is safe to add mid-playthrough and should function correctly.
+To uninstall mid-playthrough:
+1. Uncheck the "Enable" setting in the mod settings first
+2. Exit the menu and let the game run for a moment
+3. Save the game and exit, you can disable/remove the mod now
 
 # Compatibility
 The mod *should* be compatible with:
